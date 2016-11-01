@@ -1,0 +1,15 @@
+{
+    "name": "IArray",
+    "version": "1.0.0",
+    "description": "Immutable Array",
+    "main": "IArray.js",
+    "scripts": {
+        "test": "tarsy test"
+    },
+    "license": "MIT",
+    "author": "Glenn Crownover <glenn@bluejava.com> (http://www.bluejava.com)",
+    "dependencies": {},
+    "devDependencies": {
+        "tarsy": "^0.5.1"
+    }
+}
