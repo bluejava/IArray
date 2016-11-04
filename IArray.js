@@ -1,5 +1,9 @@
 /* global define */
 
+/*
+    This Universal Module Definition (UMD) handles AMD, CommonJS, and Eki module loaders.
+    If none of those is detected, it defines IArray on the global context.
+*/
 (function(global, factory) {
     if(typeof define === "function" && define.amd)
         define(factory)
@@ -7,6 +11,8 @@
 		eki.def("IArray", factory)
     else if(typeof exports === "object")
         module.exports = factory()
+    else
+        global.IArray = factory()
 	}(this, function() {
 
 	"use strict"

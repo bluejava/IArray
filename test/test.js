@@ -466,7 +466,7 @@
 					assert.deepEqual(a1.toArray(), [5, 10, 20]) // unchanged
 					assert.deepEqual(a2.toArray(), [5, 10, 20]) // unchanged
 					assert.deepEqual(a3.toArray(), [6, 5, 10, 20]) // 6 prepended to start
-					assert.deepEqual(a4, IArray([ "hello", "world", 5, 10, 20])) // prepended to start
+					assert.deepEqual(a4.toArray(), [ "hello", "world", 5, 10, 20]) // prepended to start
 
 				})
 		}
