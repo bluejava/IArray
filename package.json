@@ -1,16 +1,19 @@
 {
-    "name": "IArray",
-    "version": "1.1.1",
-    "description": "Immutable Array",
-    "main": "IArray.js",
-    "scripts": {
-        "test": "tarsy test"
-    },
-    "license": "MIT",
-    "author": "Glenn Crownover <glenn@bluejava.com> (http://www.bluejava.com)",
-    "dependencies": {},
-    "devDependencies": {
-        "tarsy": "^0.5.1"
-    },
-    "homepage": "https://gitlab.com/bluejava/IArray"
+	"name": "IArray",
+	"version": "1.1.2",
+	"description": "Immutable Array",
+	"main": "IArray.js",
+	"scripts": {
+		"test": "tarsy test",
+		"build": "uglifyjs IArray.js -c -m -o IArray.min.js"
+	},
+	"license": "MIT",
+	"author": "Glenn Crownover <glenn@bluejava.com> (http://www.bluejava.com)",
+	"dependencies": {
+		"uglifyjs": "^2.4.10"
+	},
+	"devDependencies": {
+		"tarsy": "^0.5.1"
+	},
+	"homepage": "https://gitlab.com/bluejava/IArray"
 }
