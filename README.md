@@ -2,6 +2,8 @@
 
 An Immutable Array that looks, behaves (and IS) a standard JavaScript Array but with immutable properties.
 
+For immutable Objects, see [IObject](https://github.com/bluejava/IObject)
+
 ---
 
 ## Why
