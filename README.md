@@ -122,6 +122,17 @@ var a2 = a1.pop()
 // a2.ret = 9				- last element stored in ret property
 ```
 
+### `set(index, value) => IArray`
+
+Used to assign a value to a specific index within the `IArray`. This is used as a substitute to the `array[index] = value` notation, which mutates the array. The returned `IArray` is a copy of the original array with value assigned at the index specified.
+
+```javascript
+var a1 = IArray([1, 4, 9])
+var a2 = a1.set(1, 6)
+// a1 = IArray(1, 4, 9]) - unchanged
+// a2 = IArray(1, 6, 9]) - item at index 1 is a 6
+```
+
 ### `shift() => IArray`
 
 The same API signature as the [standard](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift) `Array.shift`, but the original `IArray` is not modified. A new `IArray` is returned with the first element removed. This removed element is available through the `ret` property of the returned `IArray`.
