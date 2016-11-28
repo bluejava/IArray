@@ -83,6 +83,7 @@
 				concat: concat,
 				isIArray: true,
 				set: set,
+				toJSON: function() { return this.toArray() },
 				toArray: function() { return Array.prototype.slice.call(this) }
 			}
 		)
