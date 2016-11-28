@@ -469,6 +469,32 @@
 					assert.deepEqual(a4.toArray(), [ "hello", "world", 5, 10, 20]) // prepended to start
 
 				})
+
+			test("rm", function() {
+
+					var a1 = IArray([5, 6, 7, 8, 9, 10])
+					var a2 = a1.rm(8)
+					var a3 = a1.rm(23)	// test removal of non-existant entry
+
+					assert.deepEqual(a1.toArray(), [5, 6, 7, 8, 9, 10]) // unchanged
+					assert.deepEqual(a2.toArray(), [5, 6, 7, 9, 10]) // a1 with 8 value removed
+					assert.equal(a2.ret, 8) // here is the removed value
+					assert.deepEqual(a3.toArray(), [5, 6, 7, 8, 9, 10]) // unchanged since 23 was not present
+					assert.equal(a3.ret, undefined) // ensure return value was set as undefined
+				})
+
+				test("rmAt", function() {
+
+						var a1 = IArray([5, 6, 7, 8, 9, 10])
+						var a2 = a1.rmAt(2) // removes the 7 at position 2
+						var a3 = a1.rmAt(7)	// test removal of non-existant entry
+
+						assert.deepEqual(a1.toArray(), [5, 6, 7, 8, 9, 10]) // unchanged
+						assert.deepEqual(a2.toArray(), [5, 6, 8, 9, 10]) // a1 with 7 value at position 2 removed
+						assert.equal(a2.ret, 7) // here is the removed value
+						assert.deepEqual(a3.toArray(), [5, 6, 7, 8, 9, 10]) // unchanged since no value at position 7
+						assert.equal(a3.ret, undefined) // ensure return value was set as undefined
+					})
 		}
 
 		function testImmutableIndexChanges()

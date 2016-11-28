@@ -14,14 +14,14 @@ Arrays are an extremely popular data structure in most JavaScript programs. But 
 
 Some libraries exist that provide random access data structures similar to the Array but that are immutable, such as [Mori](http://swannodette.github.io/mori/) or [Immutable](https://facebook.github.io/immutable-js/) - but they are large opinionated libraries that expose a completely different API.
 
-**IArray** provides an Immutable array only, and is very light. 
+**IArray** provides an Immutable array only, and is very light.
 
 ```bash
-wc -l IArray.js 
-119 IArray.js
+wc -l IArray.js
+146 IArray.js
 ```
 
-119 lines in the *source* file, much of which is comments and the universal module definition. 
+146 lines in the *source* file, much of which is comments and the universal module definition.
 
 ## How
 
@@ -41,7 +41,7 @@ In cases where a method mutated the underlying array and also returned a value (
 
 ## API
 
-Since this extends the standard JavaScript `Array`, I will only document the methods that have *changed* from the standard Array API:
+Since this extends the standard JavaScript `Array`, I will only document the methods that have *changed* from the standard Array API. These include **3** new methods, `rm`, `rmAt` and `set` along with several methods from the `Array` API whose behavior is slightly changed to reflect the immutable nature of `IArray`.
 
 
 ### `concat(value1[, value2 ...]) => IArray`
@@ -120,6 +120,30 @@ var a2 = a1.pop()
 // a1 = IArray([1, 4, 9])	- unchanged
 // a2 = IArray([1, 4])		- same as a1 with last element removed
 // a2.ret = 9				- last element stored in ret property
+```
+
+### `rm(value) => IArray`
+
+Returns a new `IArray` with the `value` specified removed. If multiple occurrences of the value exists, the first one is removed. The removed value appears on the `ret` property of the newly created `IArray`. If the value does not exist in the array, no error is thrown, but the `ret` property contains `undefined`.
+
+```javascript
+var a1 = IArray([1, 4, 9])		// a1 is [ 1, 4, 9 ]
+var a2 = a1.rm(4)				// a2 is [ 1, 9 ]
+log(a2.ret)						// 4
+var a3 = a2.rm(6)				// this doesn't exist, so a3 is [ 1, 9 ]
+log(a3.ret)						// undefined
+```
+
+### `rmAt(index) => IArray`
+
+Returns a new `IArray` with the value at position `index` removed. The removed value appears on the `ret` property of the newly created `IArray`. If the `index` position specified is out of the range of the `IArray`, no error is thrown, but the `ret` property contains `undefined` and the values in the returned `IArray` are unchanged.
+
+```javascript
+var a1 = IArray([1, 4, 9])		// a1 is [ 1, 4, 9 ]
+var a2 = a1.rmAt(1)				// a2 is [ 1, 9 ]
+log(a2.ret)						// 4
+var a3 = a2.rmAt(6)				// position out of range, so a3 is [ 1, 9 ]
+log(a3.ret)						// undefined
 ```
 
 ### `set(index, value) => IArray`

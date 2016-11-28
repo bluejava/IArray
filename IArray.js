@@ -74,6 +74,24 @@
 		return deepFreeze(a2)
 	}
 
+	function rmAt(index)
+	{
+		var a2 = createIArray(this),
+			ret = Array.prototype.splice.call(a2, index, 1)
+		a2.ret = ret[0]
+		return deepFreeze(a2)
+	}
+
+	function rm(value)
+	{
+		var index = this.indexOf(value)
+		if(index >= 0)
+			return this.rmAt(index)
+		var a2 = createIArray(this)
+		a2.ret = undefined
+		return deepFreeze(a2) // return a clone
+	}
+
 	// Create our custom IArray prototype, with Array.prototype at the base
 	var IAProto = Object.assign(
 			Object.create(Array.prototype),
@@ -83,6 +101,8 @@
 				concat: concat,
 				isIArray: true,
 				set: set,
+				rm: rm,
+				rmAt: rmAt,
 				toJSON: function() { return this.toArray() },
 				toArray: function() { return Array.prototype.slice.call(this) }
 			}
