@@ -192,7 +192,7 @@ var a2 = a1.sort()
 var a3 = a1.sort(function(a, b) { return a.length - b.length }) // sort by word length
 // a1 remains unchanged: IArray(["cherries", "apples", "bananas", "pears"])
 // a2 is sorted: IArray(["apples", "bananas", "cherries", "pears"])
-// a3 is sorted according to comparitor: IArray(["pears", "apples", "bananas", "cherries"])
+// a3 is sorted according to comparator: IArray(["pears", "apples", "bananas", "cherries"])
 ```
 
 ### `splice([start[, deleteCount[, value1, value2, ...]]]) => IArray`
